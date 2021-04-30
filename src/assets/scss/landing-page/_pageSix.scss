@@ -1,0 +1,44 @@
+.container-pageSix {
+  padding: 20px;
+  background-color: black;
+  width: 100%;
+  height: 768px;
+  color: white;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  .right-hand-side-pageSix {
+    grid-column: 2;
+    align-self: center;
+    .text-pageSix {
+      h1 {
+        font-size: 3rem;
+      }
+      h3 {
+        font-size: 0.7rem;
+      }
+      h4 {
+        font-size: 1rem;
+      }
+    }
+    form {
+      width: 50%;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-top: 10px;
+      button {
+        background-color: $yellow;
+        color: black;
+        border-color: black;
+        margin-top: 0;
+      }
+    }
+  }
+  .left-hand-side-pageSix {
+    img {
+      position: relative;
+      right: 15px;
+      opacity: 0.6;
+    }
+  }
+}
