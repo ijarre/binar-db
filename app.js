@@ -16,12 +16,6 @@ app.get("/", (req, res) => {
 app.get("/suwit", (req, res) => {
   res.sendFile(path.join(__dirname, "./src/page-component-suwit/index.html"));
 });
-app.get("/script.js", (req, res) => {
-  res.sendFile(path.join(__dirname, "./src/page-component-suwit/script.js"));
-});
-app.get("/game.js", (req, res) => {
-  res.sendFile(path.join(__dirname, "./src/page-component-suwit/game.js"));
-});
 
 app.listen(port);
 console.log("Server started at http://localhost:" + port);
