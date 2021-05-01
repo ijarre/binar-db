@@ -1,4 +1,4 @@
-const response = require("../../helper/response");
+// const response = require("../../helper/response");
 const jwt = require("jsonwebtoken");
 function Auth(req, res, next) {
   try {
@@ -9,6 +9,7 @@ function Auth(req, res, next) {
         return res.sendStatus(403);
       }
       req.user = user;
+
       next();
     });
   } catch (error) {
