@@ -5,6 +5,6 @@ const router = express.Router();
 const middleware = require("../api/middleware");
 
 router.use("/", api.userRouter);
-router.use("/", middleware, api.showUserRouter);
+router.use("/", api.showUserRouter);
 
 module.exports = router;

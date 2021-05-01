@@ -1,5 +1,3 @@
-const jwt = require("jsonwebtoken");
-
 class ShowUserController {
   async showUser(req, res) {
     try {
