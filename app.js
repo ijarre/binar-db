@@ -1,6 +1,6 @@
 const express = require("express");
 
-const user = require("./data/user.json");
+const users = require("./data/user.json");
 const app = express();
 
 const port = process.env.PORT || 3000;
@@ -17,18 +17,18 @@ app.get("/login", (req, res) => {
 
 app.post("/login", (req, res) => {
   const { username, password } = req.body;
-  if (
-    user.filter((el) => el.username === username && el.password === password)
-      .length !== 0
-  ) {
-    alert(
-      `a new user just logged in by username ${username} and password ${password}`
-    );
+  const user = users.find(
+    (user) => user.username === username && user.password === password
+  );
+  if (typeof user !== undefined) {
+    console.log(user);
     res.redirect("/");
-  } else {
-    throw new Error("user tidak ditemukan");
   }
+
+  res.status(403).json(user);
 });
+
+app.get("/dashboard", (req, res) => {});
 
 app.use((err, req, res, next) => {
   console.log(err);
