@@ -35,13 +35,13 @@ app.get("/dashboard", (req, res) => {
       return a.dataValues.id - b.dataValues.id
     })
 
-    res.render("dashboard", { users })
+    res.status(200).render("dashboard", { users })
   })
 })
 
-app.get("/create", (req, res) => {
-  res.render("form")
-})
+// app.get("/create", (req, res) => {
+//   res.render("form")
+// })
 
 app.post("/create", (req, res) => {
   user_game
@@ -53,11 +53,11 @@ app.post("/create", (req, res) => {
     .then(() => res.redirect("/dashboard"))
 })
 
-app.get("/edit/:id", (req, res) => {
-  user_game
-    .findOne({ where: { id: req.params.id } })
-    .then((user) => res.render("update", { user }))
-})
+// app.get("/edit/:id", (req, res) => {
+//   user_game
+//     .findOne({ where: { id: req.params.id } })
+//     .then((user) => res.render("update", { user }))
+// })
 
 app.post("/update/:id", (req, res) => {
   user_game
