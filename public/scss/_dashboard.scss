@@ -7,4 +7,15 @@
   .create-new {
     margin-bottom: 10px;
   }
+  tbody > tr {
+    &:nth-child(2n-1) {
+      background-color: lemonchiffon;
+    }
+  }
+  table {
+    text-align: center;
+  }
+  .title {
+    background-color: aqua;
+  }
 }

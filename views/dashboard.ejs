@@ -86,7 +86,7 @@
           type="text"
           name="username"
           class="form-control"
-          id="exampleInputusername1"
+          id="username<%= user.id%>"
           aria-describedby="usernameHelp"
           value="<%= user.username%>"
         />
@@ -97,7 +97,7 @@
           type="email"
           name="email"
           class="form-control"
-          id="exampleInputEmail1"
+          id="email<%= user.id%>"
           aria-describedby="emailHelp"
           value="<%= user.email%>"
         />
@@ -109,7 +109,7 @@
           type="password"
           name="password"
           class="form-control"
-          id="exampleInputPassword1"
+          id="password<%= user.id%>"
           value="<%= user.password%>"
         />
       </div>

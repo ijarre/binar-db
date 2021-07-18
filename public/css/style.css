@@ -441,4 +441,13 @@ h3 {
 }
 .dashboard .create-new {
   margin-bottom: 10px;
+}
+.dashboard tbody > tr:nth-child(2n-1) {
+  background-color: lemonchiffon;
+}
+.dashboard table {
+  text-align: center;
+}
+.dashboard .title {
+  background-color: aqua;
 }/*# sourceMappingURL=style.css.map */
