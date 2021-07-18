@@ -1,0 +1,15 @@
+.sign-up-body {
+  background-image: url("../img/main-bg.jpg");
+  background-size: cover;
+}
+
+.sign-up {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 15px;
+  position: relative;
+  top: 70px;
+
+  .title {
+    margin-bottom: 30px;
+  }
+}
