@@ -70,7 +70,7 @@ app.post("/update/:id", (req, res) => {
     )
     .then(() => res.redirect("/dashboard"))
 })
-app.delete("/delete/:id", (req, res) => {
+app.get("/delete/:id", (req, res) => {
   console.log("asdsa")
   user_game
     .destroy({

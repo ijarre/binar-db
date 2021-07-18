@@ -37,9 +37,10 @@
                 <a href="/edit/<%= user.id %>"
                   ><button class="btn btn-info">Edit</button></a
                 >
-                <form action="/delete/<%= user.id %> method='delete' ">
+
+                <a href="/delete/<%= user.id %>">
                   <button class="btn btn-danger" type="submit">Delete</button>
-                </form>
+                </a>
               </div>
             </td>
           </tr>
