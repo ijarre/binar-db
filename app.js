@@ -30,8 +30,11 @@ app.post("/login", (req, res) => {
 })
 
 app.get("/dashboard", (req, res) => {
-  user_game.findAll().then((users) => {
-    console.log(users)
+  user_game.findAll().then((unsortedUsers) => {
+    const users = unsortedUsers.sort((a, b) => {
+      return a.dataValues.id - b.dataValues.id
+    })
+
     res.render("dashboard", { users })
   })
 })
