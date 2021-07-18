@@ -8,6 +8,7 @@ const port = process.env.PORT || 3000;
 
 app.set("view engine", "ejs");
 app.use(express.static("./public"));
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 app.get("/", (req, res) => res.status(200).render("main"));
@@ -31,19 +32,23 @@ app.post("/login", (req, res) => {
 
 app.get("/dashboard", (req, res) => {
   user_game.findAll().then((users) => {
+    console.log(users);
     res.render("dashboard", { users });
   });
 });
 
+app.get("/create", (req, res) => {
+  res.render("form");
+});
+
 app.post("/create", (req, res) => {
-  console.log(req.body);
   user_game
     .create({
       username: req.body.username,
       email: req.body.email,
       password: req.body.password,
     })
-    .then(res.send("akun berhasil dibuat"));
+    .then(() => res.redirect("/dashboard"));
 });
 
 app.get("/edit/:id", (req, res) => {
@@ -53,7 +58,6 @@ app.get("/edit/:id", (req, res) => {
 });
 
 app.post("/update/:id", (req, res) => {
-  console.log(req.body);
   user_game
     .update(
       {
