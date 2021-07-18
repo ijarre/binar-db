@@ -430,4 +430,15 @@ h3 {
 }
 .sign-up .title {
   margin-bottom: 30px;
+}
+
+.dashboard {
+  background-color: white;
+  border-radius: 15px;
+}
+.dashboard h1 {
+  text-align: center;
+}
+.dashboard .create-new {
+  margin-bottom: 10px;
 }/*# sourceMappingURL=style.css.map */

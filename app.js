@@ -19,14 +19,14 @@ app.get("/login", (req, res) => {
 
 app.post("/login", (req, res) => {
   const { username, password } = req.body
-  const user = users.find(
+  const user = users.filter(
     (user) => user.username === username && user.password === password
   )
-  if (typeof user !== undefined) {
-    res.redirect("/")
+  if (user.length !== 0) {
+    res.redirect("/dashboard")
   }
 
-  res.status(403).json(user)
+  res.redirect("/login")
 })
 
 app.get("/dashboard", (req, res) => {
