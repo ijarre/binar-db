@@ -1,45 +1,44 @@
-const express = require("express");
+const express = require("express")
 
-const users = require("./data/user.json");
-const { user_game } = require("./models");
-const app = express();
+const users = require("./data/user.json")
+const { user_game } = require("./models")
+const app = express()
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3000
 
-app.set("view engine", "ejs");
-app.use(express.static("./public"));
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
+app.set("view engine", "ejs")
+app.use(express.static("./public"))
+app.use(express.urlencoded({ extended: false }))
+app.use(express.json())
 
-app.get("/", (req, res) => res.status(200).render("main"));
-app.get("/suwit", (req, res) => res.status(200).render("suwit"));
+app.get("/", (req, res) => res.status(200).render("main"))
+app.get("/suwit", (req, res) => res.status(200).render("suwit"))
 app.get("/login", (req, res) => {
-  res.status(200).render("login");
-});
+  res.status(200).render("login")
+})
 
 app.post("/login", (req, res) => {
-  const { username, password } = req.body;
+  const { username, password } = req.body
   const user = users.find(
     (user) => user.username === username && user.password === password
-  );
+  )
   if (typeof user !== undefined) {
-    console.log(user);
-    res.redirect("/");
+    res.redirect("/")
   }
 
-  res.status(403).json(user);
-});
+  res.status(403).json(user)
+})
 
 app.get("/dashboard", (req, res) => {
   user_game.findAll().then((users) => {
-    console.log(users);
-    res.render("dashboard", { users });
-  });
-});
+    console.log(users)
+    res.render("dashboard", { users })
+  })
+})
 
 app.get("/create", (req, res) => {
-  res.render("form");
-});
+  res.render("form")
+})
 
 app.post("/create", (req, res) => {
   user_game
@@ -48,14 +47,14 @@ app.post("/create", (req, res) => {
       email: req.body.email,
       password: req.body.password,
     })
-    .then(() => res.redirect("/dashboard"));
-});
+    .then(() => res.redirect("/dashboard"))
+})
 
 app.get("/edit/:id", (req, res) => {
   user_game
     .findOne({ where: { id: req.params.id } })
-    .then((user) => res.render("update", { user }));
-});
+    .then((user) => res.render("update", { user }))
+})
 
 app.post("/update/:id", (req, res) => {
   user_game
@@ -69,26 +68,35 @@ app.post("/update/:id", (req, res) => {
         where: { id: req.params.id },
       }
     )
-    .then(() => res.redirect("/dashboard"));
-});
+    .then(() => res.redirect("/dashboard"))
+})
+app.delete("/delete/:id", (req, res) => {
+  console.log("asdsa")
+  user_game
+    .destroy({
+      where: { id: req.params.id },
+    })
+    .then(() => res.redirect("/dashboard"))
+    .catch((err) => console.log(err))
+})
 
 app.use((err, req, res, next) => {
-  console.log(err);
+  console.log(err)
   res.status(500).json({
     status: "fail",
     errors: err.message,
-  });
-  next();
-});
+  })
+  next()
+})
 
 app.use((req, res, next) => {
   res.status(404).json({
     status: "fail",
     errors: "Page not found",
-  });
-  next();
-});
+  })
+  next()
+})
 
 app.listen(port, () =>
   console.log("Server started at http://localhost:" + port)
-);
+)

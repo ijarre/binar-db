@@ -34,10 +34,12 @@
             <td><%=user.password%></td>
             <td>
               <div class="action-buttons">
-                <a href="/edit/<%= index +1 %>"
+                <a href="/edit/<%= user.id %>"
                   ><button class="btn btn-info">Edit</button></a
                 >
-                <button class="btn btn-danger">Delete</button>
+                <form action="/delete/<%= user.id %> method='delete' ">
+                  <button class="btn btn-danger" type="submit">Delete</button>
+                </form>
               </div>
             </td>
           </tr>
